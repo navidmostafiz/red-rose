@@ -1,69 +1,46 @@
-import { CssVarsProvider } from "@mui/joy/styles";
-import {
-  Button,
-  FormControl,
-  Input,
-  Typography,
-  Card,
-  Grid,
-  List,
-  ListItem,
-} from "@mui/joy";
+import React, { useState } from "react";
+import { getNameTraitByTermAsync } from "./API";
+import { log } from "./utils";
 
 function App() {
+  const [foundNameTraits, setFoundNameTraits] = useState(undefined);
+
+  const getNameTraitByTermHandler = (e) => {
+    log("nameTermSearchHandler: term=", e.target.value);
+    getNameTraitByTermAsync(e.target.value).then((data) => {
+      log(data);
+      setFoundNameTraits(data[0]);
+    });
+  };
+
   return (
-    <CssVarsProvider>
-      <Grid
-        container
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Grid xs={4}>
-          <Card variant="outlined" sx={{ maxWidth: 400 }}>
-            <Typography align="center" level="h3">
-              red*apple
-            </Typography>
-            <Typography align="center" level="h5">
-              name-trait-analysis
-            </Typography>
-            <FormControl>
-              <Input
-                // html input attribute
-                name="name"
-                type="text"
-                placeholder="name..."
-              />
-              <Button variant="solid">SHOW TRAITS</Button>
-            </FormControl>
-          </Card>
-        </Grid>
-
-        <Grid xs={4}>
-          <Card variant="outlined" sx={{ maxWidth: 400 }}>
-            <Typography align="center" level="h3">
-              Good Traits...
-            </Typography>
-            <List aria-label="basic-list">
-              <ListItem>Hello, world!</ListItem>
-              <ListItem>Bye bye, world!</ListItem>
-            </List>
-          </Card>
-        </Grid>
-
-        <Grid xs={4}>
-          <Card variant="outlined" sx={{ maxWidth: 400 }}>
-            <Typography align="center" level="h3">
-              Not So Good Traits...
-            </Typography>
-            <List aria-label="basic-list">
-              <ListItem>Hello, world!</ListItem>
-              <ListItem>Bye bye, world!</ListItem>
-            </List>
-          </Card>
-        </Grid>
-      </Grid>
-    </CssVarsProvider>
+    <div className="box">
+      <h3 align="center">red-rose</h3>
+      <input
+        autoFocus
+        autoComplete="off"
+        className="nameInput"
+        name="name"
+        placeholder="name...?"
+        onChange={getNameTraitByTermHandler}
+      />
+      <br />
+      <br />
+      <span>
+        {foundNameTraits &&
+          foundNameTraits.name &&
+          `${foundNameTraits.name}s are known to be...`}
+      </span>
+      <br />
+      <br />
+      <ul className="list_style">
+        {foundNameTraits &&
+          foundNameTraits.traits.length > 0 &&
+          foundNameTraits.traits
+            .slice(0, 3)
+            .map((trait) => <li key={trait}>{trait}</li>)}
+      </ul>
+    </div>
   );
 }
 
