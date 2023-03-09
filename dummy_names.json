@@ -1,0 +1,38 @@
+[
+  {
+    "name": "navid",
+    "traits": ["smart", "handsome", "intelligent", "kind", "couragious"]
+  },
+  {
+    "name": "nahid",
+    "traits": ["handsome", "kind", "intelligent", "couragious", "smart"]
+  },
+  {
+    "name": "nahian",
+    "traits": ["handsome", "kind", "intelligent", "couragious", "smart"]
+  },
+  {
+    "name": "nafis",
+    "traits": ["intelligent", "kind", "couragious", "smart", "handsome"]
+  },
+  {
+    "name": "nadim",
+    "traits": ["couragious", "intelligent", "kind", "smart", "handsome"]
+  },
+  {
+    "name": "a",
+    "traits": ["smart", "handsome", "intelligent", "kind", "couragious"]
+  },
+  {
+    "name": "ab",
+    "traits": ["handsome", "kind", "intelligent", "couragious", "smart"]
+  },
+  {
+    "name": "abc",
+    "traits": ["intelligent", "kind", "couragious", "smart", "handsome"]
+  },
+  {
+    "name": "abcd",
+    "traits": ["couragious", "intelligent", "kind", "smart", "handsome"]
+  }
+]
